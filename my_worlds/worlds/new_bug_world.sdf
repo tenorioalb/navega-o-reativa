@@ -1,0 +1,142 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="simple_bug_world">
+
+<light type="directional" name="sun">
+    <cast_shadows>true</cast_shadows>
+    <pose>0 0 10 0 -0 0</pose>
+    <diffuse>0.8 0.8 0.8 1</diffuse>
+    <specular>0.2 0.2 0.2 1</specular>
+    <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+    </attenuation>
+    <direction>0 0 -1</direction>
+</light>
+    
+    <model name="ground_plane">
+      <link name="ground_plane_link">
+        <collision name="ground_plane_collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="ground_plane_visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+          </material>
+        </visual>
+      </link>
+      <static>true</static>
+    </model>
+
+    <model name="wall_1">
+      <link name="wall_link_1">
+        <collision name="wall_collision_1">
+          <geometry>
+            <box>
+              <size>0.2 6 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="wall_visual_1">
+          <geometry>
+            <box>
+              <size>0.2 6 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.2 0.2 1</ambient>
+            <diffuse>0.2 0.2 0.2 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+      <pose>2 0 0.25 0 0 0</pose>
+      <static>true</static>
+    </model>
+
+    <model name="concave_U_obstacle">
+      <link name="concave_U_link">
+        <visual name="u_side_1_visual">
+          <pose>-0.75 0 0.25 0 0 0</pose>
+          <geometry><box><size>0.5 3 0.5</size></box></geometry>
+          <material><ambient>0.8 0.5 0.1 1</ambient><diffuse>0.8 0.5 0.1 1</diffuse></material>
+        </visual>
+        <visual name="u_side_2_visual">
+          <pose>0.75 0 0.25 0 0 0</pose>
+          <geometry><box><size>0.5 3 0.5</size></box></geometry>
+          <material><ambient>0.8 0.5 0.1 1</ambient><diffuse>0.8 0.5 0.1 1</diffuse></material>
+        </visual>
+        <visual name="u_base_visual">
+          <pose>0 -1.25 0.25 0 0 0</pose>
+          <geometry><box><size>1.5 0.5 0.5</size></box></geometry>
+          <material><ambient>0.8 0.5 0.1 1</ambient><diffuse>0.8 0.5 0.1 1</diffuse></material>
+        </visual>
+
+        <collision name="u_side_1_collision">
+          <pose>-0.75 0 0.25 0 0 0</pose>
+          <geometry><box><size>0.5 3 0.5</size></box></geometry>
+        </collision>
+        <collision name="u_side_2_collision">
+          <pose>0.75 0 0.25 0 0 0</pose>
+          <geometry><box><size>0.5 3 0.5</size></box></geometry>
+        </collision>
+        <collision name="u_base_collision">
+          <pose>0 -1.25 0.25 0 0 0</pose>
+          <geometry><box><size>1.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <static>true</static>
+      <pose>4 -3 0 0 0 0</pose>
+    </model>
+
+    <model name="concave_C_obstacle">
+      <link name="concave_C_link">
+        <visual name="c_side_1_visual">
+          <pose>0 0.75 0.25 0 0 0</pose>
+          <geometry><box><size>3 0.5 0.5</size></box></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+        <visual name="c_side_2_visual">
+          <pose>0 -0.75 0.25 0 0 0</pose>
+          <geometry><box><size>3 0.5 0.5</size></box></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+        <visual name="c_end_visual">
+          <pose>-1.25 0 0.25 0 0 0</pose>
+          <geometry><box><size>0.5 1.5 0.5</size></box></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+
+        <collision name="c_side_1_collision">
+          <pose>0 0.75 0.25 0 0 0</pose>
+          <geometry><box><size>3 0.5 0.5</size></box></geometry>
+        </collision>
+        <collision name="c_side_2_collision">
+          <pose>0 -0.75 0.25 0 0 0</pose>
+          <geometry><box><size>3 0.5 0.5</size></box></geometry>
+        </collision>
+        <collision name="c_end_collision">
+          <pose>-1.25 0 0.25 0 0 0</pose>
+          <geometry><box><size>0.5 1.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <static>true</static>
+      <pose>-2 3 0 0 0 0</pose>
+    </model>
+  </world>
+</sdf>
